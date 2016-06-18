@@ -1,0 +1,55 @@
+{% extends "bskwatcher/base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">通道(Tube)</h1>
+
+          <!--显示Tube信息开始-->
+          <div class="row placeholders">
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <!--<img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">-->
+              <h4>RY_TOPIC</h4>
+              <a href="{% url 'tube' 0 %}"><span class="text-muted">即时消息</span></a>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <!--<img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">-->
+              <h4>RY_TASK_TOPIC</h4>
+              <a href="{% url 'tube' 1 %}"><span class="text-muted">任务消息</span></a>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <!--<img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">-->
+              <h4>RY_CYCLE_TOPIC</h4>
+              <a href="{% url 'tube' 2 %}"><span class="text-muted">整点消息</span></a>
+            </div>
+            <!--
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4>Label</h4>
+              <span class="text-muted">Something else</span>
+            </div>-->
+          </div>
+          <!--显示Tube信息结束-->
+
+          <h2 class="sub-header">服务器统计信息</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>参数</th>
+                  <th>值</th>
+                  <th>描述</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for item in stats %}
+                  <tr>
+                    <td>{{item.key}}</td>
+                    <td>{{item.value}}</td>
+                    <td>{{item.display}}</td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+{% endblock %}
